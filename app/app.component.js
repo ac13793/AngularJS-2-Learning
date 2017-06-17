@@ -7,17 +7,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+// @Component({
+//   selector: 'my-app',
+//   template: `<h1>Hello {{name}}</h1>
+//               <h4>Headers 4 from AppComponent</h4>
+//               <my-tutorials></my-tutorials>`,
+//   styles: [`h4{
+//                 color: blue;
+//             }`]
+// })
+// export class AppComponent  { name = 'Angular'; }
+// ******************** Inputs and Outputs - Pass data from parent component to child component or vice-versa ******************
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Angular';
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>Hello {{name}}</h1>\n              <h4>Headers 4 from AppComponent</h4>\n              <my-tutorials></my-tutorials>",
-        styles: ["h4{\n                color: blue;\n            }"]
+        template: "<h1>Hello World</h1>\n            <h2>Parent App component</h2>\n            <label>Enter parent component value</label>\n            <input type=\"text\" #pText (keyup) = \"0\"/>\n            <p>Value from Child Tutorials component</p>\n            {{childData}}\n            <my-tutorials (childEvent) = \"childData = $event\" [parentData] = \"pText.value\"></my-tutorials>"
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

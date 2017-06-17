@@ -8,6 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+// If you use Two-way binding of Angular2 you must import FormsModule in your app
+var forms_1 = require("@angular/forms");
+// If you use commons elements (ngSwitch, ngIf, ngFor, ...) of Angular2 you must import CommonModule in your app
+var common_1 = require("@angular/common");
 var app_component_1 = require("./app.component");
 var tutorials_component_1 = require("./tutorials.component");
 var AppModule = (function () {
@@ -17,7 +21,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, common_1.CommonModule],
         declarations: [app_component_1.AppComponent, tutorials_component_1.TutorialsComponent],
         bootstrap: [app_component_1.AppComponent]
     })
