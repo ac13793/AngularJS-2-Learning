@@ -82,22 +82,45 @@ var core_1 = require("@angular/core");
 //     }
 // }
 // ******************** Inputs and Outputs - Pass data from parent component to child component or vice-versa ******************
-var core_2 = require("@angular/core");
+// import {EventEmitter } from '@angular/core';
+// @Component({
+//     selector: 'my-tutorials',
+//     template: `<h2>Child Tutorials Component</h2>
+//               <label>Enter Child Tutorials Component value</label>
+//               <input type="text" #childText (keyup) = "onChange(childText.value)"/>
+//               <p>Value from Parent App Component</p>
+//               {{parentData}}`,
+//     inputs: ['parentData'],
+//     outputs: ['childEvent']
+// })
+// export class TutorialsComponent {
+//     public parentData:string;
+//     public childEvent = new EventEmitter<string>();
+//     onChange(value:string){
+//         this.childEvent.emit(value);
+//     }
+// }
+// ********* Pipe Operator ******************
+// @Component({
+//     selector: 'my-tutorials',
+//     template: `<h2>{{name}}</h2>
+//                <h2>{{name | uppercase}}</h2>
+//                <h2>{{name | lowercase}}</h2>`
+// })
+// export class TutorialsComponent {
+//     public name: string = "Ankit Chaurasia";
+// }
+// ************ Template driven forms *************
 var TutorialsComponent = (function () {
     function TutorialsComponent() {
-        this.childEvent = new core_2.EventEmitter();
+        this.name = "Ankit Chaurasia";
     }
-    TutorialsComponent.prototype.onChange = function (value) {
-        this.childEvent.emit(value);
-    };
     return TutorialsComponent;
 }());
 TutorialsComponent = __decorate([
     core_1.Component({
         selector: 'my-tutorials',
-        template: "<h2>Child Tutorials Component</h2>\n              <label>Enter Child Tutorials Component value</label>\n              <input type=\"text\" #childText (keyup) = \"onChange(childText.value)\"/>\n              <p>Value from Parent App Component</p>\n              {{parentData}}",
-        inputs: ['parentData'],
-        outputs: ['childEvent']
+        template: "<h2>{{name}}</h2>\n               <h2>{{name | uppercase}}</h2>\n               <h2>{{name | lowercase}}</h2>"
     })
 ], TutorialsComponent);
 exports.TutorialsComponent = TutorialsComponent;

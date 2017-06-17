@@ -91,22 +91,48 @@ import { Component } from '@angular/core';
 // }
 
 // ******************** Inputs and Outputs - Pass data from parent component to child component or vice-versa ******************
-import {EventEmitter } from '@angular/core';
+// import {EventEmitter } from '@angular/core';
+// @Component({
+//     selector: 'my-tutorials',
+//     template: `<h2>Child Tutorials Component</h2>
+//               <label>Enter Child Tutorials Component value</label>
+//               <input type="text" #childText (keyup) = "onChange(childText.value)"/>
+//               <p>Value from Parent App Component</p>
+//               {{parentData}}`,
+//     inputs: ['parentData'],
+//     outputs: ['childEvent']
+// })
+
+// export class TutorialsComponent {
+//     public parentData:string;
+//     public childEvent = new EventEmitter<string>();
+//     onChange(value:string){
+//         this.childEvent.emit(value);
+//     }
+// }
+
+// ********* Pipe Operator ******************
+
+// @Component({
+//     selector: 'my-tutorials',
+//     template: `<h2>{{name}}</h2>
+//                <h2>{{name | uppercase}}</h2>
+//                <h2>{{name | lowercase}}</h2>`
+// })
+
+// export class TutorialsComponent {
+//     public name: string = "Ankit Chaurasia";
+// }
+
+// ************ Template driven forms *************
+
 @Component({
     selector: 'my-tutorials',
-    template: `<h2>Child Tutorials Component</h2>
-              <label>Enter Child Tutorials Component value</label>
-              <input type="text" #childText (keyup) = "onChange(childText.value)"/>
-              <p>Value from Parent App Component</p>
-              {{parentData}}`,
-    inputs: ['parentData'],
-    outputs: ['childEvent']
+    template: `<h2>{{name}}</h2>
+               <h2>{{name | uppercase}}</h2>
+               <h2>{{name | lowercase}}</h2>`
 })
 
 export class TutorialsComponent {
-    public parentData:string;
-    public childEvent = new EventEmitter<string>();
-    onChange(value:string){
-        this.childEvent.emit(value);
-    }
+    public name: string = "Ankit Chaurasia";
 }
