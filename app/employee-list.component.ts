@@ -17,6 +17,9 @@ export class EmployeeListComponent implements OnInit  {
     ngOnInit() {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
+        //this.employees = this._employeeService.getEmployees();
+
+        // Using Http Module
         this._employeeService.getEmployees()
         .subscribe(resEmployeeData => this.employees = resEmployeeData,
                     resEmployeeError => this.errorMsg = resEmployeeError);

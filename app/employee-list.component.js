@@ -17,9 +17,11 @@ var EmployeeListComponent = (function () {
         this.employees = [];
     }
     EmployeeListComponent.prototype.ngOnInit = function () {
-        var _this = this;
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
+        //this.employees = this._employeeService.getEmployees();
+        var _this = this;
+        // Using Http Module
         this._employeeService.getEmployees()
             .subscribe(function (resEmployeeData) { return _this.employees = resEmployeeData; }, function (resEmployeeError) { return _this.errorMsg = resEmployeeError; });
     };
