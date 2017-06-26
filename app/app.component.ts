@@ -110,13 +110,27 @@ import { Component } from '@angular/core';
 
  // ***************** Services using Dependency Injection **************
 
-import { EmployeeService } from './employee.service'
+// import { EmployeeService } from './employee.service'
+
+// @Component({
+//   selector: 'my-app',
+//   template: `<h1>Random Company</h1>
+//               <employee-list></employee-list>
+//               <employee-detail></employee-detail>`,
+//   providers: [EmployeeService]  // Here we are registering a service and provide it who needs it
+// })
+// export class AppComponent  {}
+
+// ********************* Routing and Navigation ****************
+
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Random Company</h1>
-              <employee-list></employee-list>
-              <employee-detail></employee-detail>`,
-  providers: [EmployeeService]  // Here we are registering a service and provide it who needs it
+  template: `<h1>Routing Application</h1>
+            <nav>
+              <a routerLink="/departments" routerLinkActive="active">Departments</a>
+              <a routerLink="/employees" routerLinkActive="active">Employees</a>
+            </nav>
+            <router-outlet></router-outlet>`
 })
 export class AppComponent  {}

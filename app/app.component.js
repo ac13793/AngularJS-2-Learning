@@ -100,7 +100,16 @@ var core_1 = require("@angular/core");
 //   }
 //  }
 // ***************** Services using Dependency Injection **************
-var employee_service_1 = require("./employee.service");
+// import { EmployeeService } from './employee.service'
+// @Component({
+//   selector: 'my-app',
+//   template: `<h1>Random Company</h1>
+//               <employee-list></employee-list>
+//               <employee-detail></employee-detail>`,
+//   providers: [EmployeeService]  // Here we are registering a service and provide it who needs it
+// })
+// export class AppComponent  {}
+// ********************* Routing and Navigation ****************
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -109,8 +118,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "<h1>Random Company</h1>\n              <employee-list></employee-list>\n              <employee-detail></employee-detail>",
-        providers: [employee_service_1.EmployeeService] // Here we are registering a service and provide it who needs it
+        template: "<h1>Routing Application</h1>\n            <nav>\n              <a routerLink=\"/departments\" routerLinkActive=\"active\">Departments</a>\n              <a routerLink=\"/employees\" routerLinkActive=\"active\">Employees</a>\n            </nav>\n            <router-outlet></router-outlet>"
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
