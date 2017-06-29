@@ -10,9 +10,11 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var employees_list_component_1 = require("./employees-list.component");
 var department_list_component_1 = require("./department-list.component");
+var department_detail_component_1 = require("./department-detail.component");
 var router = [
     { path: 'departments', component: department_list_component_1.DepartmentListComponent },
-    { path: 'employees', component: employees_list_component_1.EmployeesListComponent }
+    { path: 'employees', component: employees_list_component_1.EmployeesListComponent },
+    { path: 'departments/:id', component: department_detail_component_1.DepartmentDetailsComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -27,5 +29,5 @@ AppRoutingModule = __decorate([
     })
 ], AppRoutingModule);
 exports.AppRoutingModule = AppRoutingModule;
-exports.routingComponents = [department_list_component_1.DepartmentListComponent, employees_list_component_1.EmployeesListComponent];
+exports.routingComponents = [department_list_component_1.DepartmentListComponent, employees_list_component_1.EmployeesListComponent, department_detail_component_1.DepartmentDetailsComponent];
 //# sourceMappingURL=app-routing.modules.js.map
