@@ -1,4 +1,10 @@
 "use strict";
+// ************************ Route Parameter ************************
+// import { Component, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
+// @Component ({
+//     template: '<h3>You selected department with id = {{departmentId}}</h3>'
+// })
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,25 +15,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// export class DepartmentDetailsComponent implements OnInit {
+//     public departmentId: string;
+//     constructor(private router: ActivatedRoute){}
+//     ngOnInit() {
+//         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+//         //Add 'implements OnInit' to the class.
+//         let id: string = this.router.snapshot.params['id'];
+//         this.departmentId = id;
+//     }
+// }
+// *********** Params Observable ********
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var DepartmentDetailsComponent = (function () {
-    function DepartmentDetailsComponent(router) {
+    function DepartmentDetailsComponent(route, router) {
+        this.route = route;
         this.router = router;
     }
     DepartmentDetailsComponent.prototype.ngOnInit = function () {
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
-        var id = this.router.snapshot.params['id'];
-        this.departmentId = id;
+        // ******** Snapshot Approach ***********
+        // let id: string = this.route.snapshot.params['id'];
+        // this.departmentId = parseInt(id);
+        var _this = this;
+        // ********** Params Observable Approach **********
+        this.route.params.subscribe(function (params) {
+            var id = parseInt(params['id']);
+            _this.departmentId = id;
+        });
+    };
+    DepartmentDetailsComponent.prototype.goPrevious = function () {
+        var previoudId = this.departmentId - 1;
+        this.router.navigate(['/departments', previoudId]);
+    };
+    DepartmentDetailsComponent.prototype.goNext = function () {
+        var nextId = (this.departmentId + 1).toString();
+        console.log("Next:" + nextId);
+        this.router.navigate(['/departments', nextId]);
     };
     return DepartmentDetailsComponent;
 }());
 DepartmentDetailsComponent = __decorate([
     core_1.Component({
-        template: '<h3>You selected department with id = {{departmentId}}</h3>'
+        template: "<h3>You selected department with id = {{departmentId}}</h3>\n                <a (click)=\"goPrevious()\">Previous</a>\n                <a (click)=\"goNext()\">Next</a>"
     }),
-    __metadata("design:paramtypes", [router_1.ActivatedRoute])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, router_1.Router])
 ], DepartmentDetailsComponent);
 exports.DepartmentDetailsComponent = DepartmentDetailsComponent;
 //# sourceMappingURL=department-detail.component.js.map
