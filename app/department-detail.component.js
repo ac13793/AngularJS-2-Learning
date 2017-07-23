@@ -90,7 +90,10 @@ var DepartmentDetailsComponent = (function () {
     };
     DepartmentDetailsComponent.prototype.gotoDepartments = function () {
         var selectedId = this.departmentId ? this.departmentId : null;
-        this.router.navigate(['/departments', { id: selectedId, random: "random" }]);
+        // ***************** Absolute path navigation ****************
+        //this.router.navigate(['/departments', {id: selectedId, random: "random"}]);
+        // ***************** Relative path navigation ****************
+        this.router.navigate(['../', { id: selectedId }], { relativeTo: this.route });
     };
     return DepartmentDetailsComponent;
 }());
