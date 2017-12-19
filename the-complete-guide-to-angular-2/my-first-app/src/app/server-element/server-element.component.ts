@@ -21,7 +21,6 @@ import {
 })
 export class ServerElementComponent implements OnInit,
   OnChanges,
-  SimpleChanges,
   DoCheck,
   AfterContentInit,
   AfterContentChecked,
