@@ -30,7 +30,7 @@
       <br>
       <br>
       <ul class="list-group">
-        <div *ngIf="onlyOdd">
+        <!-- <div *ngIf="onlyOdd">
           <li class="list-group-item" *ngFor="let number of oddNumbers" [ngClass]="{odd: number % 2 !== 0}" >
             {{number}}
           </li>
@@ -46,7 +46,13 @@
               {{number}}
             </li>
           </div>
-        </ng-template>
+        </ng-template> -->
+
+        <div *appUnless="onlyOdd">
+          <li class="list-group-item" *ngFor="let number of oddNumbers" [ngClass]="{odd: number % 2 !== 0}" >
+            {{number}}
+          </li>
+        </div>
       </ul>
       <p appBasicHighlight>App basic highlight</p>
       <p appBetterHighlight [defaultColor] = "'pink'" [highlightColor]="'red'">App Better Highlight</p>
