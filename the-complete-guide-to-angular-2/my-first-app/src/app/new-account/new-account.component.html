@@ -6,9 +6,9 @@
     </div>
     <div class="form-group">
       <select #status class="form-control">
-        <option value="active"></option>
-        <option value="inactive"></option>
-        <option value="unknown"></option>
+        <option value="active">Active</option>
+        <option value="inactive">InActive</option>
+        <option value="unknown">Unknown</option>
       </select>
     </div>
     <button class="btn btn-primary" (click)="onCreateAccount(accountName.value, status.value)">Add</button>
