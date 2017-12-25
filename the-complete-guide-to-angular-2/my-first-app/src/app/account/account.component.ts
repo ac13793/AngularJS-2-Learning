@@ -25,6 +25,7 @@ export class AccountComponent implements OnInit {
     // console.log('A Server status changed, new status: ' + status);
     this.accountService.updateStatus(this.id, status);
     // this.loggingService.logStatusChange(status);
+    this.accountService.statusChanged.emit(status);
   }
 
 }
