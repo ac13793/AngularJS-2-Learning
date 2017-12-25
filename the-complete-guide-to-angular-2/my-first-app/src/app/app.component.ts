@@ -25,10 +25,35 @@ import { Component } from '@angular/core';
 //   }
 // }
 
+// export class AppComponent {
+//   // numbers = [1, 2, 3, 4, 5];
+//   oddNumbers = [1, 3, 5, 7];
+//   evenNumbers = [2, 4, 6];
+//   onlyOdd = false;
+//   value = 5;
+// }
+
 export class AppComponent {
-  // numbers = [1, 2, 3, 4, 5];
-  oddNumbers = [1, 3, 5, 7];
-  evenNumbers = [2, 4, 6];
-  onlyOdd = false;
-  value = 5;
+  accounts = [
+    {
+      name: 'Master Account',
+      status: 'active'
+    },
+    {
+      name: 'Test Account',
+      status: 'inactive'
+    },
+    {
+      name: 'Hideen Account',
+      status: 'unknown'
+    }
+  ];
+
+  onAccountAdded(newAccount: { name: string, status, string }) {
+    this.accounts.push(newAccount);
+  }
+
+  onStatusChanged(updateInfo: { id: number, newStatus: string }) {
+    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  }
 }
