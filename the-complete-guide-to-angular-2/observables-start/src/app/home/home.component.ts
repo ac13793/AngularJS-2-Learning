@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/observable/interval';
 import 'rxjs/Rx';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -10,17 +12,18 @@ import 'rxjs/Rx';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements OnInit, OnDestroy {
+  numberObsSubscription: Subscription;
+  customObsSubscription: Subscription;
   constructor() { }
 
   ngOnInit() {
-    // const myNumbers = Observable.interval(1000);
-    // myNumbers.subscribe(
-    //   (number: number) => {
-    //     console.log(number);
-    //   }
-    // );
+    const myNumbers = Observable.interval(1000);
+    this.numberObsSubscription = myNumbers.subscribe(
+      (number: number) => {
+        console.log(number);
+      }
+    );
 
     const myObservable = Observable.create((observer: Observer<String>) => {
       setTimeout(() => { observer.next('first Package') }, 2000);
@@ -29,12 +32,17 @@ export class HomeComponent implements OnInit {
       setTimeout(() => { observer.complete(); }, 6000);
       setTimeout(() => { observer.next('does not work') }, 7000);
     });
-    myObservable.subscribe(
+    this.customObsSubscription = myObservable.subscribe(
       (data: String) => { console.log(data); },
       (error) => { console.log(error) },
       () => { console.log("completed"); }
     );
 
+  }
+
+  ngOnDestroy() {
+    this.numberObsSubscription.unsubscribe();
+    this.customObsSubscription.unsubscribe();
   }
 
 }
