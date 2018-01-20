@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { UsersService } from "app/users.service";
+import { UsersService } from 'app/users.service';
 
 @Component({
   selector: 'app-user',
@@ -10,18 +10,18 @@ import { UsersService } from "app/users.service";
 export class UserComponent implements OnInit {
   id: number;
 
-  constructor(private route: ActivatedRoute, private UsersService:UsersService) { }
+  constructor(private route: ActivatedRoute, private UsersService: UsersService) { }
 
   ngOnInit() {
     this.route.params
       .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-        }
+      (params: Params) => {
+        this.id = +params['id'];
+      }
       );
   }
 
-  onActivate(){
+  onActivate() {
     this.UsersService.userActivated.next(this.id);
   }
 

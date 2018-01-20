@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Observer} from 'rxjs/Observer';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/observable/interval';
 import 'rxjs/Rx';
 
@@ -15,22 +15,22 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // const myNumbers = Observable.interval(1000  );
-    // myNumbers.subscribe(
-    //   (number: number) => {
-    //     console.log(number);
-    //   }
-    // );
+    const myNumbers = Observable.interval(1000);
+    myNumbers.subscribe(
+      (number: number) => {
+        console.log(number);
+      }
+    );
 
-    const myObservable = Observable.create((observer:Observer<String>)=>{ 
-      setTimeout(()=>{observer.next('first Package')},2000);
-      setTimeout(()=>{observer.next('second Package')},4000);
-      setTimeout(()=>{observer.error('does not work')},5000);
+    const myObservable = Observable.create((observer: Observer<String>) => {
+      setTimeout(() => { observer.next('first Package') }, 2000);
+      setTimeout(() => { observer.next('second Package') }, 4000);
+      setTimeout(() => { observer.error('does not work') }, 5000);
 
     });
-    myObservable.subscribe((data: String)=>{
+    myObservable.subscribe((data: String) => {
       console.log(data);
-    },(error)=>{console.log(error)},()=>{console.log("completed");});
+    }, (error) => { console.log(error) }, () => { console.log("completed"); });
 
   }
 
