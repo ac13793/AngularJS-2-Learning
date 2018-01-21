@@ -28,10 +28,21 @@
         <p>Your reply: {{answer}}</p>
         <div class="radio" *ngFor="let gender of genders">
           <label for="">
-            <input type="radio" name="gender" ngModel [value]="gender">{{gender}}</label>
+            <input type="radio" name="gender" ngModel [value]="gender" required>{{gender}}</label>
         </div>
         <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Submit</button>
       </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="submitted" >
+    <div class="col-xs-12">
+      <h3>Your Data</h3>
+      <p>User Name: {{user.username}}</p>
+      <p>Mail: {{user.email}}</p>
+      <p>Secret Question: Your first {{user.secretQuestion}}</p>
+      <p>Answer: {{user.answer}}</p>
+      <p>Gender: {{user.gender}}</p>
     </div>
   </div>
 </div>
