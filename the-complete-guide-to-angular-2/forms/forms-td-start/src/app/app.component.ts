@@ -8,6 +8,8 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('f') signupForm: NgForm;  // @ViewChild allows us to access local reference
+  defaultQuestion = 'pet';
+
   suggestUserName() {
     const suggestedName = 'Superuser';
   }
