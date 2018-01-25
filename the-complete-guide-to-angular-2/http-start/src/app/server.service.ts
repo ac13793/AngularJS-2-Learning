@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Http, Headers } from "@angular/http";
 import 'rxjs/Rx';
 import { Response } from "@angular/http";
+import { Observable } from "rxjs/Observable";
 
 // This decorator is required if you plan to inject a service into a service
 @Injectable()
@@ -18,12 +19,19 @@ export class ServerService {
     }
 
     getServers() {
-        return this.http.get('https://udemy-ng-http-f79ae.firebaseio.com/data.json')
+        return this.http.get('https://udemy-ng-http-f79ae.firebaseio.com/')
             .map(
             (response: Response) => {
                 const data = response.json();
                 // Here we are returning another Observables
                 return data;
+            }
+            )
+            .catch(
+            (error: Response) => {
+                console.log(error);
+                // Catch operator will not wrap our data into an Observable
+                return Observable.throw(error);
             }
             );
     }
