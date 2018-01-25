@@ -10,7 +10,9 @@ export class ServerService {
         const headers = new Headers({
             'Content-Type': 'application/json'
         });
-        return this.http.post('https://udemy-ng-http-f79ae.firebaseio.com/data.json', servers, {headers: headers});
+        // return this.http.post('https://udemy-ng-http-f79ae.firebaseio.com/data.json', servers, {headers: headers});
+        // Put request does not create new data instead it will override the existing data
+        return this.http.put('https://udemy-ng-http-f79ae.firebaseio.com/data.json', servers, {headers: headers});
     }
 
     getServers(){
