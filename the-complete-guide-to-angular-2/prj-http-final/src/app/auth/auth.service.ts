@@ -14,9 +14,9 @@ export class AuthService {
             .then(
             response => {
                 firebase.auth().currentUser.getToken()
-                .then(
+                    .then(
                     (token: string) => this.token = token
-                )
+                    )
             }
             )
             .catch(
@@ -26,9 +26,13 @@ export class AuthService {
 
     getToken() {
         firebase.auth().currentUser.getToken()
-        .then(
+            .then(
             (token: string) => this.token = token
-        );
+            );
         return this.token;
+    }
+
+    isAuthenticated() {
+        return this.token != null;
     }
 }
