@@ -1,13 +1,13 @@
-import { NgModule } from "@angular/core";
-import { RecipesComponent } from "app/recipes/recipes.component";
-import { RecipeStartComponent } from "app/recipes/recipe-start/recipe-start.component";
-import { RecipeListComponent } from "app/recipes/recipe-list/recipe-list.component";
-import { RecipeEditComponent } from "app/recipes/recipe-edit/recipe-edit.component";
-import { RecipeDetailComponent } from "app/recipes/recipe-detail/recipe-detail.component";
-import { RecipeItemComponent } from "app/recipes/recipe-list/recipe-item/recipe-item.component";
-import { DropdownDirective } from "app/shared/dropdown.directive";
-import { ReactiveFormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { RecipesComponent } from 'app/recipes/recipes.component';
+import { RecipeStartComponent } from 'app/recipes/recipe-start/recipe-start.component';
+import { RecipeListComponent } from 'app/recipes/recipe-list/recipe-list.component';
+import { RecipeEditComponent } from 'app/recipes/recipe-edit/recipe-edit.component';
+import { RecipeDetailComponent } from 'app/recipes/recipe-detail/recipe-detail.component';
+import { RecipeItemComponent } from 'app/recipes/recipe-list/recipe-item/recipe-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RecipesRoutingModule } from 'app/recipes/recipes-routing.module';
 
 @NgModule({
     declarations: [
@@ -16,12 +16,12 @@ import { CommonModule } from "@angular/common";
         RecipeListComponent,
         RecipeEditComponent,
         RecipeDetailComponent,
-        RecipeItemComponent,
-        DropdownDirective
+        RecipeItemComponent
     ],
     imports: [
         CommonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RecipesRoutingModule
     ]
 })
 export class RecipesModule {
