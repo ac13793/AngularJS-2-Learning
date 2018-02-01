@@ -4,7 +4,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { SignupComponent } from 'app/auth/signup/signup.component';
 import { SigninComponent } from 'app/auth/signin/signin.component';
 import { AuthGuard } from 'app/auth/auth-guard.service';
-import { HomeComponent } from 'app/home/home.component';
+import { HomeComponent } from 'app/core/home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
