@@ -9,7 +9,7 @@ import { DataStorageService } from 'app/shared/data-storage.service';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-  constructor(private dataStorageService: DataStorageService, private authService: AuthService) { }
+  constructor(private dataStorageService: DataStorageService, public authService: AuthService) { }
 
   onSaveData() {
     this.dataStorageService.storeRecipes()
