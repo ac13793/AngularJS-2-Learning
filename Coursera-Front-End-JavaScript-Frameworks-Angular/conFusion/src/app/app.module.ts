@@ -17,6 +17,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { PromotionService } from './services/promotion.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { HttpModule } from '@angular/http';
     FlexLayoutModule,
     AppRoutingModule
   ],
-  providers: [DishService],
+  providers: [DishService, PromotionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
