@@ -21,12 +21,12 @@
   </div>
 
 
-  <div fxFlex="40" *ngIf="comments">
+  <div fxFlex="40" *ngIf="dish">
     <div>
       <h3>Comments</h3>
     </div>
     <md-list>
-      <md-list-item *ngFor="let comment of comments">
+      <md-list-item *ngFor="let comment of dish.comments">
         <div mat-line>{{comment.comment}}</div>
         <div mat-line>{{comment.rating}} Starts</div>
         <div mat-line>-- {{comment.author}} {{comment.date | date}}</div>
