@@ -8,7 +8,7 @@ export class FeedbackService {
 
   constructor(private restangular: Restangular) { }
 
-  submitFeedback(newFeedback: Feedback): Observable<Feedback[]> {
+  submitFeedback(newFeedback: Feedback): Observable<Feedback> {
     return this.restangular.all('feedback').post(newFeedback);
   }
 }

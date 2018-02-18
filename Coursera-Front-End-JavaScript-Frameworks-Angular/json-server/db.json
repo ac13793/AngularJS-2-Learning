@@ -220,23 +220,23 @@
   ],
   "feedback": [
     {
-      "firstname": "Ankit",
-      "lastname": "Chaurasia",
-      "telnum": "9703981966",
+      "firstname": "cfvgbhjn",
+      "lastname": "fgvhjn",
+      "telnum": "2345678",
       "email": "ac13793@gmail.com",
-      "agree": true,
+      "agree": false,
       "contacttype": "Tel",
-      "message": "Sample feedback",
+      "message": "fghbjn",
       "id": 1
     },
     {
-      "firstname": "Test2",
-      "lastname": "Test2",
-      "telnum": "16516665",
-      "email": "test@gmail.com",
-      "agree": false,
-      "contacttype": "None",
-      "message": "test",
+      "firstname": "Ankit",
+      "lastname": "Chaurasia",
+      "telnum": "84561654",
+      "email": "ac13793@gmail.com",
+      "agree": true,
+      "contacttype": "Email",
+      "message": "Sample Feedback",
       "id": 2
     }
   ]

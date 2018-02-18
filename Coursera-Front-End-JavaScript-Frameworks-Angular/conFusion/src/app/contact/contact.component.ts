@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animation';
 import { FeedbackService } from '../services/feedback.service';
+import { flyInOut, expand } from '../animations/app.animation';
+import { ProcessHTTPMsgService } from '../services/process-httpmsg.service';
+
 
 @Component({
   selector: 'app-contact',
@@ -13,13 +15,17 @@ import { FeedbackService } from '../services/feedback.service';
     'style': 'display: block;'
   },
   animations: [
-    flyInOut()
+    flyInOut(),
+    expand()
   ]
 })
 export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
+  feedbackCopy = null;
+  feedbackErrMess: string;
+  submitting: boolean;
 
   formErrors = {
     'firstname': '',
@@ -49,11 +55,13 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder, private feedbackService: FeedbackService) {
+  constructor(private fb: FormBuilder, private feedbackService: FeedbackService, private processHTTPMsg: ProcessHTTPMsgService) {
     this.createForm();
   }
 
   ngOnInit() {
+    this.feedback = null;
+    this.submitting = false;
   }
 
   createForm(): void {
@@ -91,8 +99,12 @@ export class ContactComponent implements OnInit {
 
 
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+    // this.feedback = this.feedbackForm.value;
+    // console.log(this.feedback);
+    this.feedbackCopy = this.feedbackForm.value;
+    console.log('Feedback copy: ');
+    console.log(this.feedbackCopy);
+    this.submitting = true;
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
@@ -102,6 +114,18 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
-    this.feedbackService.submitFeedback(this.feedback).subscribe(feedback => this.feedback);
+    this.feedbackService.submitFeedback(this.feedbackCopy)
+      .subscribe(feedback => {
+        console.log('Feedback: ');
+        console.log(feedback);
+        // this.feedback = feedback['feedback'];
+        this.feedback = feedback;
+        console.log('Returned Feedback');
+        console.log(this.feedback);
+        // console.log('Returned JSON Feedback');
+        // console.log(feedback['feedback'].json());
+        this.submitting = false;
+        setTimeout(() => { this.feedback = null; }, 5000);
+      });
   }
 }
