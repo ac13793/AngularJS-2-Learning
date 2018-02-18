@@ -59,7 +59,7 @@
     <h2>Corporate Leadership</h2>
     <md-list *ngIf="leaders">
       <md-list-item class="md-2-line" *ngFor="let leader of leaders">
-        <img md-list-avatar src={{leader.image}} alt={{leader.name}}>
+        <img md-list-avatar src="{{BaseURL + leader.image}}" alt={{leader.name}}>
         <p mat-line>{{leader.name}} {{leader.abbr | uppercase}}</p>
         <p mat-line>{{leader.designation}}</p>
         <p mat-line>{{leader.description}}</p>

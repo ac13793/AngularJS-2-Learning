@@ -5,17 +5,21 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 import { baseURL } from '../shared/baseurl';
+import { RestangularModule, Restangular } from 'ngx-restangular';
+import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 @Injectable()
 export class LeaderService {
 
-  constructor() { }
+  constructor(private restangular: Restangular,
+    private processHTTPMsg: ProcessHTTPMsgService) { }
 
   getLeaders(): Observable<Leader[]> {
-    return Observable.of(LEADERS).delay(2000);
+    return this.restangular.all('leaders').getList();
   }
 
   getFeaturedLeader(): Observable<Leader> {
-    return Observable.of(LEADERS.filter((leader) => leader.featured)[0]).delay(2000);
+    return this.restangular.all('leaders').getList({ featured: true })
+      .map(leader => leader[0]);
   }
 }
