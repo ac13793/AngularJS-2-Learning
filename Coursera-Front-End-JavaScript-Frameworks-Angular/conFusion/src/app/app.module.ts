@@ -20,6 +20,8 @@ import { HttpModule } from '@angular/http';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
+import { baseURL } from './shared/baseurl';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 
 @NgModule({
@@ -44,7 +46,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [DishService, PromotionService, LeaderService],
+  providers: [DishService, PromotionService, LeaderService, { provide: 'BaseURL', useValue: baseURL }, ProcessHTTPMsgService],
   entryComponents: [LoginComponent],
   bootstrap: [AppComponent]
 })
