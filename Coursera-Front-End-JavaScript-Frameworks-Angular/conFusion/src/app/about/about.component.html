@@ -57,17 +57,21 @@
 
   <div fxFlex>
     <h2>Corporate Leadership</h2>
-    <p>Display the details of the corporate leaders here</p>
+    <md-list *ngIf="leaders">
+      <md-list-item class="md-2-line" *ngFor="let leader of leaders">
+        <img md-list-avatar src={{leader.image}} alt={{leader.name}}>
+        <p mat-line>{{leader.name}} {{leader.abbr | uppercase}}</p>
+        <p mat-line>{{leader.designation}}</p>
+        <p mat-line>{{leader.description}}</p>
+      </md-list-item>
+    </md-list>
+    <div [hidden]="leaders">
+      <md-spinner></md-spinner>
+      <h4>Loading . . . Please Wait</h4>
+    </div>
   </div>
 
-  <md-list>
-    <md-list-item class="md-2-line" *ngFor="let leader of leaders">
-      <img md-list-avatar src={{leader.image}} alt={{leader.name}}>
-      <p mat-line>{{leader.name}} {{leader.abbr | uppercase}}</p>
-      <p mat-line>{{leader.designation}}</p>
-      <p mat-line>{{leader.description}}</p>
-    </md-list-item>
-  </md-list>
+
 
 
 </div>
